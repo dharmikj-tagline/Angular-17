@@ -6,9 +6,11 @@
     </div>
 </div>
 
-<button (click)="menuState = (menuState === 'out' ? 'in' : 'out');" class="hamburger">
-    <span>toggle menu</span>
-</button>
+<youtube-player videoId="mVjYG9TSN88" placeholderImageQuality="high" placeholderButtonLabel="Afspil video"
+    [startSeconds]="5" />
+<!-- disablePlaceholder -->
+
+
 <h1>Sidebar</h1>
 <div class="sidebar" [@slideInOut]="menuState">
     <ul [@slideInOut]="menuState">
@@ -21,9 +23,13 @@
     </ul>
 </div>
 
-<nav>
+<div class="d-block">
     <button type="button" (click)="toggle()">Toggle Open/Close</button>
-</nav>
+</div>
+
+<button (click)="menuState = (menuState === 'out' ? 'in' : 'out');" class="hamburger">
+    <span>toggle menu</span>
+</button>
 
 <div [@openClose]="isOpen ? 'open' : 'closed'" class="open-close-container">
     <p>The box is now {{ isOpen ? 'Open' : 'Closed' }}!</p>

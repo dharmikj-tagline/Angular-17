@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { AppRoute } from '../../model/route';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { YouTubePlayer } from '@angular/youtube-player';
 
 interface FeatureList {
   label: string;
@@ -42,7 +43,7 @@ interface FeatureList {
     ]),
   ],
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, YouTubePlayer],
   templateUrl: './all-feature.component.html',
   styleUrl: './all-feature.component.scss',
   host: { ngSkipHydration: 'true' }
@@ -125,5 +126,4 @@ export class AllFeatureComponent {
   navigate(link: string) {
     this.router.navigate([`${link}`]);
   }
-
 }

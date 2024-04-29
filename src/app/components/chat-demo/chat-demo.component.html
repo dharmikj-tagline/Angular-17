@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-4">
+    <h4 class="text-danger">USER LIST</h4>
+
+    <hr />
+    @for(list of userList;track list){
+    <div class="d-flex align-items-center cursor-pointer">
+      <img
+        [src]="list.img"
+        alt="dp"
+        height="50"
+        width="50"
+        style="border-radius: 50%"
+      />
+      <h6 class="ps-3">{{ list.name }}</h6>
+    </div>
+    <hr />
+    }
+  </div>
+  <div class="col-md-8">
+    <h4 class="text-danger">USER</h4>
+  </div>
+</div>

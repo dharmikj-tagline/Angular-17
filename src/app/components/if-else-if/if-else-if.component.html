@@ -1,0 +1,9 @@
+<h1 class="text-danger text-center fw-bold">IF - ELSEIF</h1>
+
+@if(userInfo.isLoggedIn) {
+    <div>Logged-in</div>
+} @else if(userInfo.isAdmin) {
+    <div>Admin</div>
+} @else {
+    <div>Please Login</div>
+}

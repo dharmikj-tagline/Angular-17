@@ -1,0 +1,38 @@
+<h1 class="text-danger text-center fw-bold"> FOR </h1>
+
+<h6>User List</h6>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">ID</th>
+            <th scope="col">NAME</th>
+            <th scope="col">ACTION</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (user of userList(); let i = $index; track i) {
+        <tr>
+            <td>{{i + 1}}</td>
+            <td>{{user.id}}
+            </td>
+            <td (dblclick)="onEdit(i,user.isEdit,user)">
+                @if (!user.isEdit) {
+                <span> {{user.name}} </span>
+                } @else {
+                <div class="form-group">
+                    <input type="text" class="form-control" [(ngModel)]="user.name" [value]="user.name"
+                        (keyup.enter)="onEdit(i,user.isEdit,user)">
+                </div>
+                }
+            </td>
+            <td>
+                <button class="btn btn-primary ms-4" (click)="onEdit(i,user.isEdit,user)">
+                    {{user.isEdit ? 'Update' : 'Edit'}}
+                </button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

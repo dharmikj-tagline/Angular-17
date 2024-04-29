@@ -1,0 +1,98 @@
+<h1 class="text-center text-danger fw-bold">DEFER</h1>
+
+<div class="d-flex justify-content-between flex-wrap">
+  <div class="card p-4 my-3" style="width: 18rem">
+    <div class="card-body">
+      <h5 class="card-title text-center fw-bold">On viewport</h5>
+      <hr />
+      <!-- DEFAULT : on idle -->
+      <!-- Content arrive on view then load -->
+      @defer (on viewport) {
+      <h5>{{ "defer" | titlecase }}</h5>
+      } @placeholder (minimum 2s) {
+      <h5>{{ "placeholder" | titlecase }}</h5>
+      } @loading (after 2s; minimum 2s) {
+      <h5>{{ "loading" | titlecase }}</h5>
+      } @error () {
+      <h5>{{ "error" | titlecase }}</h5>
+      }
+    </div>
+  </div>
+
+  <div class="card p-4 my-3" style="width: 18rem">
+    <div class="card-body">
+      <h5 class="card-title text-center fw-bold">On viewport(Target)</h5>
+      <hr />
+      <div class="p-4 mb-2 bg-info" #viewportVariable>Load Box</div>
+      @defer (on viewport(viewportVariable)) {
+      <h5>Viewport with Target Load</h5>
+      }
+    </div>
+  </div>
+
+  <div class="card p-4 my-3" style="width: 18rem">
+    <div class="card-body">
+      <h5 class="card-title text-center fw-bold">When (Condition)</h5>
+      <hr />
+      @defer (when isVisible) {
+      <h5>{{ "defer" | titlecase }}</h5>
+      }
+      <button class="btn btn-primary" (click)="isVisible = true">
+        Load Defer
+      </button>
+    </div>
+  </div>
+
+  <div class="card p-4 my-3" style="width: 18rem">
+    <div class="card-body">
+      <h5 class="card-title text-center fw-bold">On interaction</h5>
+      <hr />
+      <button class="btn btn-primary" #click>Load With interaction</button>
+      @defer (on interaction(click)) {
+      <h5>Interaction Content Display</h5>
+      }
+    </div>
+  </div>
+
+  <div class="card p-4 my-3" style="width: 18rem">
+    <div class="card-body">
+      <h5 class="card-title text-center fw-bold">On hover</h5>
+      <hr />
+      <div #hoverComment>Hover to Load</div>
+      @defer (on hover(hoverComment)) {
+      <h5>Hover Content</h5>
+      }
+    </div>
+  </div>
+
+  <div class="card p-4 my-3" style="width: 18rem">
+    <div class="card-body">
+      <h5 class="card-title text-center fw-bold">On timer</h5>
+      <hr />
+      @defer (on timer(3s)) {
+      <h5>Timer Content</h5>
+      }
+    </div>
+  </div>
+
+  <div class="card p-4 my-3" style="width: 18rem">
+    <div class="card-body">
+      <h5 class="card-title text-center fw-bold">On immediate</h5>
+      <hr />
+      @defer (on immediate) {
+      <h5>Immediate Content</h5>
+      }
+    </div>
+  </div>
+
+  <div class="card p-4 my-3" style="width: 18rem">
+    <div class="card-body">
+      <h5 class="card-title text-center fw-bold">With multiple</h5>
+      <hr />
+      <div #hoverMulti>Hover to Load</div>
+      @defer (on hover(hoverMulti),timer(5s); when isVisible) {
+      <h5>Multiple Content</h5>
+      }
+    </div>
+  </div>
+</div>

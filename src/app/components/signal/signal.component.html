@@ -1,0 +1,57 @@
+<h1 class="text-danger text-center fw-bold">SIGNAL</h1>
+
+<hr />
+<div class="row">
+  <div class="col-md-6">
+    <h4>1. Writable Signal</h4>
+    <h3 class="text-center mt-3">
+      Counter : <span class="text-danger">{{ plus() }}</span> <br />
+      <!-- Object :<span class="text-danger">{{ detailObj() | json }}</span> -->
+    </h3>
+
+    <div class="d-flex justify-content-around">
+      <button class="btn btn-primary" (click)="increase()">Increase (+)</button>
+      <button class="btn btn-danger" (click)="decrease()">Decrease (-)</button>
+      <!-- <button class="btn btn-danger" (click)="updateObj()">UpdateDetail</button> -->
+    </div>
+  </div>
+
+  <div class="col-md-6 border-left">
+    <h4>2. Computed Signal (Read Only)</h4>
+    <span>You Cannot Update It.</span>
+    <h3 class="text-center mt-4">
+      Multiply By 2 :- <span class="text-danger">{{ secondMultiply() }}</span>
+    </h3>
+  </div>
+</div>
+<hr />
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">TITLE</th>
+      <th scope="col">BODY</th>
+      <th scope="col">ACTION</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (user of samplePostData(); let i = $index; track i) {
+    <tr>
+      <td>{{ user.id }}</td>
+      <td>{{ user.title }}</td>
+      <td>{{ user.body }}</td>
+      <td>
+        <button class="btn btn-primary" (click)="editData(i)">Edit</button>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>
+
+<input
+  type="text"
+  class="form-control"
+  [formControl]="fname"
+  placeholder="First Name"
+/>
+<p>{{ firstNameSignal() }}</p>
